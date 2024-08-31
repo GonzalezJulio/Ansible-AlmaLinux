@@ -1,0 +1,27 @@
+---
+- name: Configurar y gestionar Apache en servera
+  hosts: servers
+  become: yes  # Asegúrate de que se utilicen privilegios de superusuario
+  tasks:
+    - name: Instalar Apache
+      yum:
+        name: httpd
+        state: present
+
+    - name: Iniciar Apache
+      command: /usr/sbin/httpd -k start
+      ignore_errors: yes  # Ignorar errores si ya está en ejecución
+
+    - name: Asegurarse de que Apache esté en ejecución
+      command: /usr/sbin/httpd -k start
+      register: apache_start
+      changed_when: apache_start.rc == 0
+
+    - name: Verificar si Apache está en ejecución
+      command: ps aux | grep httpd
+      register: apache_status
+
+    - name: Mostrar estado de Apache
+      debug:
+        var: apache_status.stdout_lines
+
