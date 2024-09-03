@@ -17,11 +17,12 @@
       register: apache_start
       changed_when: apache_start.rc == 0
 
-    - name: Verificar si Apache está en ejecución
-      command: ps aux | grep httpd
-      register: apache_status
+    - #name: Verificar si Apache está en ejecución
+      #command: ps aux | grep httpd
+      #register: apache_status
 
     - name: Mostrar estado de Apache
       debug:
         var: apache_status.stdout_lines
-
+~                                                                                                                                
+~                                                
