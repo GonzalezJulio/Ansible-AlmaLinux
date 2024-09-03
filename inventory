@@ -1,3 +1,9 @@
-servers]
-servera ansible_host=***** ansible_user=**** ansible_ssh_pass=*****
+
+
 #rellenar los espacios con Host: ip del contenedor, user= usuario del contenedor, pass= contraseña del contenedor
+
+[servers]
+servera ansible_host=**** ansible_user=**** ansible_ssh_pass=****
+serverb ansible_host=**** ansible_user=**** ansible_ssh_pass=****
+serverc ansible_host=**** ansible_user=**** ansible_ssh_pass=****
+serverd ansible_host=**** ansible_user=**** ansible_ssh_pass=****
